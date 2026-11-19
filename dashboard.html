@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVet Taís Bitelo - Painel Clínico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Barra de navegação móvel / Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <img src="imagens/logo.png.png" alt="Logotipo" style="width: 200px; margin-bottom: 10px; border-radius: 8px;">
+            <h2>🐾 MedVet Taís Bitelo</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="active">📋 Prontuários</a>
+        </nav>
+        <div class="user-info">
+            <p>Veterinário ativo:</p>
+            <strong id="vet-name">Carregando...</strong>
+            <button class="btn-logout" onclick="logout()">Terminar Sessão</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="dashboard-header">
+            <h1>Registo e Prontuário Veterinário</h1>
+            <p class="subtitle">Gestão clínica de pacientes e histórico terapêutico</p>
+        </header>
+
+        <!-- Formulário Estruturado -->
+        <section class="card">
+            <h2>Novo Registo de Paciente</h2>
+            <form id="patient-form">
+                <div class="form-grid-3">
+                    <div class="input-group"><label for="nome">Nome do Animal *</label><input type="text" id="nome" required placeholder="Ex: Thor"></div>
+                    <div class="input-group">
+                        <label for="especie">Espécie *</label>
+                        <select id="especie" required>
+                            <option value="" disabled selected>Selecionar...</option>
+                            <option value="Canina">Canina (Cão)</option>
+                            <option value="Felina">Felina (Gato)</option>
+                            <option value="Equina">Equina (Cavalo)</option>
+                            <option value="Silvestre/Exótico">Silvestre / Exótico</option>
+                            <option value="Outra">Outra</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label for="raca">Raça *</label><input type="text" id="raca" required placeholder="Ex: Golden Retriever, SRD"></div>
+                </div>
+
+                <div class="form-grid-4">
+                    <div class="input-group">
+                        <label for="sexo">Sexo *</label>
+                        <select id="sexo" required>
+                            <option value="" disabled selected>Selecionar...</option>
+                            <option value="Macho">Macho</option>
+                            <option value="Fêmea">Fêmea</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="castrado">Estado Reprodutivo *</label>
+                        <select id="castrado" required>
+                            <option value="Não Castrado">Inteiro (Não Castrado)</option>
+                            <option value="Castrado">Castrado</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label for="peso">Peso Atual (kg) *</label><input type="number" id="peso" step="0.05" min="0" required placeholder="Ex: 14.2"></div>
+                    <div class="input-group"><label for="idade">Idade Estimada</label><input type="text" id="idade" placeholder="Ex: 3 anos e 2 meses"></div>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="input-group"><label for="tutor">Nome do Tutor *</label><input type="text" id="tutor" required placeholder="Ex: Mariana Silveira"></div>
+                    <div class="input-group"><label for="contacto">Contacto do Tutor</label><input type="tel" id="contacto" placeholder="Ex: (51) 99999-9999"></div>
+                    <div class="input-group"><label for="microchip">Nº Microchip</label><input type="text" id="microchip" placeholder="Registo eletrónico"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="consultas">Histórico Clínico e Consultas Anteriores</label>
+                    <textarea id="consultas" rows="3" placeholder="Sintomatologia, data da última intervenção, diagnósticos prévios..."></textarea>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="input-group">
+                        <label for="vacinacao">Estado Vacinal</label>
+                        <select id="vacinacao">
+                            <option value="Atualizado">Protocolo Vacinal Atualizado</option>
+                            <option value="Pendente">Vacinas em Atraso / Pendentes</option>
+                            <option value="Desconhecido">Histórico Desconhecido</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label for="alergias">Alergias / Contraindicações</label><input type="text" id="alergias" placeholder="Ex: Alergia a Penicilinas, AINEs"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="medicamentos">Terapêutica Farmacológica em Curso / Medicamentos</label>
+                    <textarea id="medicamentos" rows="2" placeholder="Fármacos prescritos, dosagens e horários..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Gravar Ficha do Paciente</button>
+            </form>
+        </section>
+
+        <!-- Lista de Pacientes -->
+        <section>
+            <div class="list-header">
+                <h2>Pacientes Registados</h2>
+                <span id="patient-count" class="badge">0 registos</span>
+            </div>
+            <div id="patient-list" class="patient-grid"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

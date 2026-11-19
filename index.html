@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - MedVet Taís Bitelo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <img src="imagens/logo.png.png" alt="Logotipo" style="width: 300px; margin-bottom: 1rem;">
+        <h1></h1>
+        <form id="login-form">
+            <div class="input-group">
+                <label>Usuário</label>
+                <input type="text" id="usuario" required placeholder="Digite 'admin'">
+            </div>
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" id="senha" required placeholder="Digite '1234'">
+            </div>
+            <p id="erro-msg" style="color: red; display: none; font-size: 0.9rem; margin-bottom: 1rem;">Usuário ou senha inválidos.</p>
+            <button type="submit" class="btn-primary">Entrar no Sistema</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const usuario = document.getElementById('usuario').value.trim();
+            const senha = document.getElementById('senha').value.trim();
+
+            // Validação direta com login e senha fixos
+            if (usuario === 'admin' && senha === '1234') {
+                const dadosVeterinario = {
+                    id: 1,
+                    usuario: 'admin',
+                    nome: 'Dra. Taís Bitelo'
+                };
+                
+                localStorage.setItem('vet_user', JSON.stringify(dadosVeterinario));
+                window.location.href = 'dashboard.html';
+            } else {
+                document.getElementById('erro-msg').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
