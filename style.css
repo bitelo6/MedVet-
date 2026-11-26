@@ -39,7 +39,7 @@ body {
 }
 
 .sidebar h2 { color: #2dd4bf; margin-bottom: 2.5rem; font-size: 1.5rem; text-align: center;}
-.sidebar nav p { padding: 10px; background: rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer;}
+.sidebar nav p { padding: 10px; background: rgba(255, 255, 255, 1); border-radius: 8px; cursor: pointer;}
 
 .user-info {
     margin-top: auto; border-top: 1px solid #334155;
